@@ -4,7 +4,7 @@ void LISECalEnergyLoss()
 {
   const int Z=1;
   const int A=1;
-  int LiseModel=2;//
+  int LiseModel=1; // LiseModel=1 is good for low energy 
 
   // Input the effective thickness of silicon strip detectors, by unit: um
   double TelSiThickness[12];
@@ -18,7 +18,7 @@ void LISECalEnergyLoss()
   double ESi = 5; //MeV
   for(int numtel=0; numtel<12; numtel++)
   {
-    double Eresidual=LISEModule.GetResidualEnergy(Z,A,ESi,"Si",TelSiThickness[numtel],LiseModel);
+    double Eresidual=LISEModule.GetResidualEnergy(Z,A,ESi,"Mylar",TelSiThickness[numtel],LiseModel);
     double EresidualOnCsI=Eresidual-LISEModule.GetEnergyLoss(Z,A,Eresidual,"Mylar",CsIMylarThickness,LiseModel);
     double CsIE=EresidualOnCsI;
 //    double EresidualMax=LISEModule.GetResidualEnergy(Z,A,ESi+errESi,"Si",TelSiThickness[numtel],LiseModel);
